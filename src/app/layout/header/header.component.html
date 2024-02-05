@@ -1,0 +1,100 @@
+<!-- Top Bar -->
+<div id="topBar">
+    <div class="container">
+
+        <!-- right -->
+        <ul class="top-links list-inline float-right">
+            <li class="text-welcome hidden-xs-down">Welcome to Smarty, <strong>John Doe</strong></li>
+            <li>
+                <a class="dropdown-toggle no-text-underline" data-toggle="dropdown" href="#"><i
+                        class="fa fa-user hidden-xs-down"></i> MY ACCOUNT</a>
+                <ul class="dropdown-menu float-right">
+
+                    <li><a tabindex="-1" href="#" (click)="logout()"><i class="glyphicon glyphicon-off"></i> LOGOUT</a></li>
+                </ul>
+            </li>
+            <li class="hidden-xs-down"><a href="page-login-1.html">LOGIN</a></li>
+            <li class="hidden-xs-down"><a href="page-register-1.html">REGISTER</a></li>
+        </ul>
+
+        <!-- left -->
+
+
+    </div>
+</div>
+<!-- /Top Bar -->
+<!--
+AVAILABLE HEADER CLASSES
+
+Default nav height: 96px
+.header-md 		= 70px nav height
+.header-sm 		= 60px nav height
+
+.b-0 		= remove bottom border (only with transparent use)
+.transparent	= transparent header
+.translucent	= translucent header
+.sticky			= sticky header
+.static			= static header
+.dark			= dark header
+.bottom			= header on bottom
+
+shadow-before-1 = shadow 1 header top
+shadow-after-1 	= shadow 1 header bottom
+shadow-before-2 = shadow 2 header top
+shadow-after-2 	= shadow 2 header bottom
+shadow-before-3 = shadow 3 header top
+shadow-after-3 	= shadow 3 header bottom
+
+.clearfix		= required for mobile menu, do not remove!
+
+Example Usage:  class="clearfix sticky header-sm transparent b-0"
+-->
+<div id="header" class="navbar-toggleable-md sticky clearfix">
+
+    <!-- SEARCH HEADER -->
+    <div class="search-box over-header">
+        <a id="closeSearch" href="#" class="fa fa-remove"></a>
+
+        <form action="page-search-result-1.html" method="get">
+            <input type="text" class="form-control" placeholder="SEARCH" />
+        </form>
+    </div>
+    <!-- /SEARCH HEADER -->
+    <!-- TOP NAV -->
+    <!-- /Top Nav -->
+
+</div>
+
+
+<!--
+PAGE HEADER
+
+CLASSES:
+    .page-header-xs	= 20px margins
+    .page-header-md	= 50px margins
+    .page-header-lg	= 80px margins
+    .page-header-xlg= 130px margins
+    .dark			= dark page header
+
+    .shadow-before-1 	= shadow 1 header top
+    .shadow-after-1 	= shadow 1 header bottom
+    .shadow-before-2 	= shadow 2 header top
+    .shadow-after-2 	= shadow 2 header bottom
+    .shadow-before-3 	= shadow 3 header top
+    .shadow-after-3 	= shadow 3 header bottom
+-->
+<section class="page-header page-header-xs">
+    <div class="container">
+
+        <h1>SHOP</h1>
+
+        <!-- breadcrumbs -->
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li class="active">4 Columns</li>
+        </ol><!-- /breadcrumbs -->
+
+    </div>
+</section>
+<!-- /PAGE HEADER -->

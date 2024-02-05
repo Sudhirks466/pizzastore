@@ -1,0 +1,258 @@
+<!-- SLIDE TOP -->
+
+<!-- /SLIDE TOP -->
+
+
+<!-- wrapper -->
+<div id="wrapper">
+
+    <!-- Top Bar -->
+
+    <!-- /Top Bar -->
+
+
+
+    <!-- 
+				AVAILABLE HEADER CLASSES
+
+				Default nav height: 96px
+				.header-md 		= 70px nav height
+				.header-sm 		= 60px nav height
+
+				.b-0 		= remove bottom border (only with transparent use)
+				.transparent	= transparent header
+				.translucent	= translucent header
+				.sticky			= sticky header
+				.static			= static header
+				.dark			= dark header
+				.bottom			= header on bottom
+				
+				shadow-before-1 = shadow 1 header top
+				shadow-after-1 	= shadow 1 header bottom
+				shadow-before-2 = shadow 2 header top
+				shadow-after-2 	= shadow 2 header bottom
+				shadow-before-3 = shadow 3 header top
+				shadow-after-3 	= shadow 3 header bottom
+
+				.clearfix		= required for mobile menu, do not remove!
+
+				Example Usage:  class="clearfix sticky header-sm transparent b-0"
+			-->
+
+
+    <!-- 
+				PAGE HEADER 
+				
+				CLASSES:
+					.page-header-xs	= 20px margins
+					.page-header-md	= 50px margins
+					.page-header-lg	= 80px margins
+					.page-header-xlg= 130px margins
+					.dark			= dark page header
+
+					.shadow-before-1 	= shadow 1 header top
+					.shadow-after-1 	= shadow 1 header bottom
+					.shadow-before-2 	= shadow 2 header top
+					.shadow-after-2 	= shadow 2 header bottom
+					.shadow-before-3 	= shadow 3 header top
+					.shadow-after-3 	= shadow 3 header bottom
+			-->
+    <section class="page-header">
+        <div class="container">
+
+            <h1>LOGIN</h1>
+
+            <!-- breadcrumbs -->
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Pages</a></li>
+                <li class="active">Login</li>
+            </ol><!-- /breadcrumbs -->
+
+        </div>
+    </section>
+    <!-- /PAGE HEADER -->
+
+
+
+
+    <!-- -->
+    <section>
+        <div class="container">
+
+            <div class="row">
+
+                <!-- LOGIN -->
+                <div class="col-md-6 col-sm-6">
+
+                    <!-- login form -->
+                    <form [formGroup]="loginForm" focusOnError (ngSubmit)="submitLogin()" class="sky-form boxed">
+
+                        <header class="fs-18 mb-20">
+                            I'm a returning customer
+                        </header>
+
+                        <fieldset class="m-0">
+
+                            <label class="input mb-10">
+                                <i class="ico-append fa fa-envelope"></i>
+                                <input type="email" placeholder="Email address" formControlName="emailId"
+                                    [ngClass]="{'is-invalid':f1.emailId.touched && f1.emailId.errors}"
+                                    (keypress)="removeWhiteSpace($event, 'emailId')">
+                                <b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+                                <div *ngIf="submitted && f1.emailId.errors" class="text-danger">
+                                    <div *ngIf="f1.emailId.errors.required">
+                                        Email is <strong>required.</strong>
+                                    </div>
+                                    <div *ngIf="f1.emailId.hasError('pattern')">
+                                        Pattern <strong>not matched!</strong>
+                                    </div>
+                                    <div *ngIf="f1.emailId.hasError('maxlength')">
+                                        Minimum <strong>32</strong> characters!
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="input mb-10">
+                                <i class="ico-append fa fa-lock"></i>
+                                <input type="password" placeholder="Password" formControlName="password"
+                                    [ngClass]="{'is-invalid':f1.password.touched && f1.password.errors}"
+                                    (keypress)="removeWhiteSpace($event, 'password')">
+                                <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                                <div *ngIf="submitted && f1.password.errors" class="text-danger">
+                                    <div *ngIf="f1.password.errors.required">
+                                        Password is <strong>required.</strong>
+                                    </div>
+                                    <div *ngIf="f1.password.hasError('maxlength')">
+                                        Maximum <strong>16</strong> characters!
+                                    </div>
+                                    <div *ngIf="f1.password.hasError('minlength')">
+                                        Minimum <strong>6</strong> characters!
+                                    </div>
+                                </div>
+                            </label>
+
+                            <div class="clearfix note mb-30">
+                                <a class="float-right" href="#">Forgot Password?</a>
+                            </div>
+
+                            <label class="checkbox fw-300">
+                                <input type="checkbox" name="checkbox-inline">
+                                <i></i> Keep me logged in
+                            </label>
+
+                        </fieldset>
+
+                        <footer>
+                            <button type="submit" class="btn btn-primary rad-0 float-right"><i class="fa fa-check"></i>
+                                OK, LOG IN</button>
+                        </footer>
+
+                    </form>
+                    <!-- /login form -->
+
+                    <!-- ALERT -->
+                    <div class="alert alert-mini alert-danger mb-30">
+                        <strong>Oh snap!</strong> Login Incorrect!
+                    </div><!-- /ALERT -->
+
+                </div>
+                <!-- /LOGIN -->
+
+                <!-- SOCIAL LOGIN -->
+                <div class="col-md-6 col-sm-6">
+                    <form action="#" method="post" class="sky-form boxed">
+
+                        <header class="fs-18 mb-20">
+                            Sign In using your favourite social network
+                        </header>
+
+                        <fieldset class="m-0">
+
+                            <div class="row">
+
+                                <div class="col-md-8 offset-md-2">
+
+                                    <a class="btn btn-block btn-social btn-facebook mb-10">
+                                        <i class="fa fa-facebook"></i> Sign in with Facebook
+                                    </a>
+
+
+
+                                    <a class="btn btn-block btn-social btn-twitter mb-10">
+                                        <i class="fa fa-twitter"></i> Sign in with Twitter
+                                    </a>
+
+                                    <a class="btn btn-block btn-social btn-google mb-10">
+                                        <i class="fa fa-google-plus"></i>
+                                            Sign in with Google
+                                    </a>
+                                    <!-- <div id="g_id_onload"
+                                        data-client_id="1064613440314-vurhm8rdpj403ftv459r21hf2o4inatf.apps.googleusercontent.com"
+                                        data-context="signin" data-ux_mode="popup"
+                                        data-login_uri="http://localhost:4200/login" data-auto_select="true"
+                                        data-itp_support="true">
+                                    </div>
+
+                                    <div class="g_id_signin" data-type="standard" data-shape="rectangular"
+                                        data-theme="outline" data-text="signin_with" data-size="large"
+                                        data-logo_alignment="left">
+                                    </div> -->
+
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <footer>
+                            Don't have an account yet? <a href="page-register-1.html"><strong>Click to
+                                    register!</strong></a>
+                        </footer>
+
+                    </form>
+
+                </div>
+                <!-- /SOCIAL LOGIN -->
+
+            </div>
+
+
+        </div>
+    </section>
+    <!-- / -->
+
+
+
+
+    <!-- FOOTER -->
+    <footer id="footer">
+
+
+        <div class="copyright">
+            <div class="container">
+                <ul class="float-right m-0 list-inline mobile-block">
+                    <li><a href="#">Terms &amp; Conditions</a></li>
+                    <li>&bull;</li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+                &copy; All Rights Reserved, Company LTD
+            </div>
+        </div>
+    </footer>
+    <!-- /FOOTER -->
+
+</div>
+<!-- /wrapper -->
+
+
+<!-- SCROLL TO TOP -->
+<a href="#" id="toTop"></a>
+
+
+<!-- PRELOADER -->
+<!-- <div id="preloader">
+			<div class="inner">
+				<span class="loader"></span>
+			</div>
+		</div> -->
+<!-- /PRELOADER -->

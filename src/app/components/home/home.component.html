@@ -1,0 +1,30 @@
+<ul class="shop-item-list row list-inline m-0">
+    <li class="col-lg-3 col-sm-3" *ngFor="let item of pizzaList; let i = index;">
+
+        <div class="shop-item">
+
+            <div class="thumbnail">
+                <a class="shop-item-image" >
+                    <img class="img-fluid" src="assets/demo_files/images/shop/products/300x450/p13.jpg"
+                        alt="shop first image" />
+                </a>
+            </div>
+
+            <div class="shop-item-summary text-center">
+                <h2>{{ item.name }}</h2>
+                <div class="shop-item-rating-line">
+                    <div class="rating rating-4 fs-13"></div>
+                </div>
+                <div class="shop-item-price">
+                    <!-- <span class="line-through">$98.00</span> -->
+                    ${{ item.price | number : '1.2' }}
+                </div>
+            </div>
+
+            <div class="shop-item-buttons text-center">
+                <a class="btn btn-default" ><i class="fa fa-cart-plus"></i> Add to Cart</a>
+            </div>
+        </div>
+
+    </li>
+</ul>
