@@ -9,7 +9,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './layout/layout.module';
 import { TokenIntercepterService } from './_services/token-intercepter.service';
 import { SocialLoginModule, SocialAuthServiceConfig, } from '@abacritt/angularx-social-login';
-import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 
 
 @NgModule({
@@ -39,6 +39,10 @@ import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider('1064613440314-vurhm8rdpj403ftv459r21hf2o4inatf.apps.googleusercontent.com'),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('1107428193603626'),
           },
         ],
       } as SocialAuthServiceConfig,
