@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/_services/auth/auth.service';
 
-
+import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -15,12 +15,15 @@ export class LoginComponent implements OnInit {
   loginForm: any = FormGroup;
   submitted = false;
   private accessToken = '';
+  socialUser!: SocialUser;
+  isLoggedin?: boolean;
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private el: ElementRef,
     private loginService: AuthService,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    private socialAuthService: SocialAuthService
   ) { }
 
   /* --------------------- start --------------------- */
@@ -35,10 +38,36 @@ export class LoginComponent implements OnInit {
       password: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(16)]]
     })
     /* ------------------ login reactive form validation end -------------------------------*/
+
+    this.socialAuthService.authState.subscribe((user) => {
+      this.socialUser = user;
+      this.isLoggedin = user != null;
+      // console.log(this.socialUser);
+      let credentials = {
+        "email": this.socialUser.email,
+        "password": "123456"
+      }
+      this.loginService.loginUser(credentials).subscribe((response: any) => {
+        this.submitted = false;
+        if (response.token) {
+          sessionStorage.setItem('token', response.token);
+          this.router.navigate(['/']);
+        } else {
+          sessionStorage.removeItem('token');
+        }
+      }, (error: any) => {
+        sessionStorage.removeItem('token');
+        alert(error.error.error);
+      })
+    });
   }
   /* --------------------- end --------------------- */
 
   get f1() { return this.loginForm.controls; }
+
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
 
   /* ---------------------------- the login form submit function start ------------------------------*/
   submitLogin() {

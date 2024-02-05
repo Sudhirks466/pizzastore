@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // import { AuthService } from '../_services/auth/auth.service';
+import {  GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
+    GoogleSigninButtonModule
   ],
+  // providers:[
+    
+  // ]
 })
 export class AuthModule { }

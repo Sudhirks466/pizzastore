@@ -8,6 +8,8 @@ import { AuthService } from './_services/auth/auth.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from './layout/layout.module';
 import { TokenIntercepterService } from './_services/token-intercepter.service';
+import { SocialLoginModule, SocialAuthServiceConfig, } from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { TokenIntercepterService } from './_services/token-intercepter.service';
     AppRoutingModule,
     AuthModule,
     HttpClientModule,
-    LayoutModule
+    LayoutModule,
+    SocialLoginModule,
   ],
   providers: [
     AuthService,
@@ -28,7 +31,18 @@ import { TokenIntercepterService } from './_services/token-intercepter.service';
       useClass: TokenIntercepterService,
       multi: true
     },
-    
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider('1064613440314-vurhm8rdpj403ftv459r21hf2o4inatf.apps.googleusercontent.com'),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    },
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
